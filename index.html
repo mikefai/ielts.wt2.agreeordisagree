@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS Academic Writing Task 2 — Agree / Disagree Practice Lab</title>
+<style>
+  :root{
+    --ink:#1a2332;
+    --ink-soft:#2e3a4f;
+    --paper:#fefcf7;
+    --paper-dim:#f5f0e3;
+    --rule:#e2d9c3;
+    --red:#c1272d;
+    --red-dark:#8f1c21;
+    --mustard:#e8a838;
+    --mustard-soft:#fdf0d0;
+    --sage:#3a6b4c;
+    --sage-bg:#e6efe7;
+    --blue:#2456a6;
+    --blue-bg:#e8eefb;
+    --radius:14px;
+    --shadow:0 10px 30px rgba(26,35,50,.10);
+    --mono:"SF Mono",Consolas,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height:1.6;
+  }
+  /* progress bar */
+  #progressBar{position:fixed;top:0;left:0;height:4px;background:var(--red);width:0;z-index:100;transition:width .2s}
+  /* header */
+  .topbar{
+    border-bottom:2px solid var(--ink);
+    background:var(--paper);
+    position:sticky;top:0;z-index:50;
+  }
+  .topbar-inner{max-width:1080px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .stamp{
+    font-family:Georgia, "Times New Roman", serif;
+    font-weight:900;letter-spacing:.06em;
+    border:2.5px solid var(--red);color:var(--red);
+    padding:4px 10px;border-radius:6px;transform:rotate(-3deg);
+    font-size:13px;text-transform:uppercase;background:#fff;
+  }
+  .brand h1{font-size:15px;margin:0;line-height:1.2}
+  .brand h1 span{display:block;font-weight:400;font-size:12.5px;color:var(--ink-soft)}
+  .topbar nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .topbar a{font-size:13px;color:var(--ink);text-decoration:none;border:1px solid var(--rule);padding:7px 12px;border-radius:999px;background:#fff}
+  .topbar a:hover{border-color:var(--ink)}
+  .btn-red{background:var(--red)!important;color:#fff!important;border-color:var(--red)!important;font-weight:700}
+
+  /* hero — exam desk thesis */
+  .hero{max-width:1080px;margin:0 auto;padding:44px 24px 20px;display:grid;grid-template-columns:1.15fr .85fr;gap:32px}
+  @media(max-width:860px){.hero{grid-template-columns:1fr}}
+  .eyebrow{
+    display:inline-block;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--ink);color:#fff;padding:5px 10px;border-radius:4px;margin-bottom:14px;
+  }
+  .hero h2{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:clamp(32px,5vw,52px);line-height:1.02;margin:0 0 14px;letter-spacing:-.02em;
+  }
+  .hero h2 em{font-style:italic;color:var(--red)}
+  .hero p.lead{font-size:17px;color:var(--ink-soft);max-width:560px;margin:0 0 18px}
+  .hero-stats{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+  .stat{border:1.5px solid var(--ink);border-radius:10px;padding:10px 14px;background:#fff;min-width:130px}
+  .stat b{font-family:Georgia,serif;font-size:22px;display:block;line-height:1}
+  .stat span{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+  .howto{background:#fff;border:1.5px solid var(--ink);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .howto-head{background:var(--ink);color:#fff;padding:12px 18px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;display:flex;justify-content:space-between}
+  .howto-head i{color:var(--mustard);font-style:normal}
+  .howto-body{padding:18px}
+  .howto-body ol{margin:0 0 0 18px;padding:0}
+  .howto-body li{margin-bottom:10px;font-size:14.5px}
+  .howto-body li b{background:var(--mustard-soft);padding:1px 6px;border-radius:4px}
+  .formula{margin-top:12px;background:var(--paper-dim);border:1px dashed var(--ink-soft);border-radius:10px;padding:12px 14px;font-size:13.5px}
+  .formula code{font-family:var(--mono);background:#fff;padding:2px 6px;border-radius:4px;border:1px solid var(--rule)}
+
+  .container{max-width:1080px;margin:0 auto;padding:10px 24px 80px}
+  .section-title{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;border-top:2px solid var(--ink);padding-top:16px}
+  .section-title h3{font-family:Georgia,serif;font-size:26px;margin:0}
+  .section-title p{margin:0;color:var(--ink-soft);font-size:14px}
+
+  /* exercise card — exam booklet */
+  .card{
+    background:#fff;border:2px solid var(--ink);border-radius:16px;margin-bottom:26px;overflow:hidden;box-shadow:var(--shadow);
+  }
+  .card-top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:2px solid var(--ink);background:linear-gradient(180deg,#fff, #fffdf3)}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--ink);border-radius:999px;padding:4px 10px;background:#fff}
+  .tag.topic{background:var(--ink);color:#fff}
+  .tag.level-B7{background:var(--blue-bg);border-color:var(--blue);color:var(--blue)}
+  .tag.level-B8{background:var(--mustard-soft);border-color:#9a7414;color:#7a5c0e}
+  .tag.level-B9{background:#fde8e8;border-color:var(--red);color:var(--red)}
+  .timer{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:13px}
+  .timer-display{border:1.5px solid var(--ink);border-radius:8px;padding:4px 10px;background:var(--ink);color:#fff;min-width:74px;text-align:center}
+  .timer button{border:1.5px solid var(--ink);background:#fff;border-radius:8px;padding:4px 10px;cursor:pointer;font-family:inherit;font-size:13px}
+  .timer button:hover{background:var(--ink);color:#fff}
+  .qbox{padding:20px 20px 6px}
+  .q-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:8px}
+  .question{font-family:Georgia, serif;font-size:21px;line-height:1.4;margin:0 0 10px}
+  .q-hint{font-size:13.5px;color:var(--ink-soft);background:var(--paper-dim);border-left:4px solid var(--mustard);padding:10px 12px;border-radius:0 8px 8px 0;margin:0 0 12px}
+  /* rescue bar — signature element */
+  .rescue-bar{display:flex;gap:10px;flex-wrap:wrap;padding:6px 20px 16px}
+  .btn{
+    border:2px solid var(--ink);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:700;cursor:pointer;background:#fff;color:var(--ink);
+    display:inline-flex;align-items:center;gap:8px;transition:transform .08s;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-ideas{background:var(--red);border-color:var(--red-dark);color:#fff;box-shadow:3px 3px 0 var(--ink)}
+  .btn-ideas:hover{background:var(--red-dark)}
+  .btn-ghost:hover{background:var(--ink);color:#fff}
+  .btn-vocab{background:var(--mustard-soft)}
+  .btn-outline{background:var(--blue-bg)}
+  .panel{display:none;margin:0 20px 14px;border-radius:12px;padding:16px 18px;font-size:14.5px;border:1.5px solid}
+  .panel.open{display:block;animation:pop .18s ease-out}
+  @keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  .panel-ideas{background:#fff5f5;border-color:var(--red)}
+  .panel-vocab{background:#fffaf0;border-color:#9a7414}
+  .panel-outline{background:#f0f4ff;border-color:var(--blue)}
+  .panel-sample{background:#f1f7f1;border-color:var(--sage)}
+  .panel h4{margin:0 0 8px;font-size:14px;text-transform:uppercase;letter-spacing:.08em}
+  .panel-ideas h4{color:var(--red)}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:700px){.cols{grid-template-columns:1fr}}
+  .agree,.disagree{border-radius:10px;padding:12px;background:#fff;border:1px solid var(--rule)}
+  .agree b{color:var(--sage)} .disagree b{color:var(--red)}
+  .agree ul,.disagree ul,.panel ul{margin:8px 0 0 18px;padding:0}
+  .agree li,.disagree li,.panel li{margin-bottom:6px}
+  .thesis{margin-top:12px;background:var(--ink);color:#fff;border-radius:10px;padding:12px 14px}
+  .thesis strong{color:var(--mustard)}
+  .vocab-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .vocab-grid span{font-family:var(--mono);font-size:12.5px;background:#fff;border:1px solid #9a7414;border-radius:999px;padding:4px 10px}
+
+  /* writing area — booklet lines */
+  .write-wrap{padding:0 20px 20px}
+  .write-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:6px 0 8px;flex-wrap:wrap}
+  .word-pill{font-family:var(--mono);font-size:12.5px;border:1.5px solid var(--ink);border-radius:999px;padding:4px 12px;background:#fff}
+  .word-pill.ok{background:var(--sage-bg);border-color:var(--sage);color:var(--sage);font-weight:700}
+  .word-pill.low{background:#fff;border-color:var(--red);color:var(--red)}
+  .checklist{font-size:12.5px;color:var(--ink-soft)}
+  textarea{
+    width:100%;min-height:220px;resize:vertical;
+    border:2px solid var(--ink);border-radius:12px;padding:16px 16px 16px 20px;
+    font-size:15.5px;line-height:28px;font-family:Georgia, serif;
+    background:repeating-linear-gradient(#fff,#fff 27px,#e9e1cc 27px,#e9e1cc 28px);
+    outline:none;
+  }
+  textarea:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(193,39,45,.15)}
+  .write-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .btn-small{padding:7px 13px;font-size:13px;border-width:1.5px}
+  .done-badge{display:none;font-size:13px;font-weight:700;color:var(--sage);background:var(--sage-bg);border:1.5px solid var(--sage);border-radius:999px;padding:6px 12px}
+  .done-badge.show{display:inline-block}
+
+  /* footer band */
+  .band{background:var(--ink);color:#fff;border-radius:16px;padding:24px;margin-top:10px}
+  .band h3{font-family:Georgia,serif;margin:0 0 8px;font-size:22px}
+  .band p{margin:0 0 12px;color:#d6dcea;font-size:14.5px;max-width:700px}
+  .band-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+  @media(max-width:860px){.band-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.band-grid{grid-template-columns:1fr}}
+  .band-card{background:#fff;color:var(--ink);border-radius:12px;padding:14px}
+  .band-card b{font-family:Georgia,serif;font-size:18px}
+  .band-card span{font-size:13px;color:var(--ink-soft);display:block}
+  :focus-visible{outline:3px solid var(--mustard);outline-offset:2px}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div id="progressBar"></div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="stamp">Task 2 • Agree / Disagree</div>
+      <h1>IELTS Academic Writing Practice Lab<span>6 exam-style questions • rescue ideas • 40-min timer</span></h1>
+    </div>
+    <nav>
+      <a href="#exercises">Exercises</a>
+      <a href="#method">Method</a>
+      <a href="#exercises" class="btn-red" id="navProgress">0 / 6 done</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">Academic Writing • To what extent do you agree or disagree?</span>
+    <h2>Take a clear position. <em>Defend it</em> like an examiner is watching.</h2>
+    <p class="lead">This page gives you <b>6 real agree/disagree prompts</b>. Plan in 5 minutes, write 250+ words in 35 minutes. If your mind goes blank, hit the red <b>“Stuck? Get Ideas”</b> button on any question — it gives you arguments for both sides, thesis sentences, and Band 7+ vocabulary.</p>
+    <div class="hero-stats">
+      <div class="stat"><b>250+</b><span>words required</span></div>
+      <div class="stat"><b>40:00</b><span>per essay timer</span></div>
+      <div class="stat"><b>4-paragraph</b><span>safe structure</span></div>
+      <div class="stat"><b>6</b><span>prompts included</span></div>
+    </div>
+  </div>
+  <div class="howto" id="method">
+    <div class="howto-head"><span>Examiner-approved method</span><i>● ● ●</i></div>
+    <div class="howto-body">
+      <ol>
+        <li><b>Paraphrase + thesis</b> — rewrite the question in your introduction, then state your position clearly in one sentence.</li>
+        <li><b>Pick ONE side</b> (or balanced, but lean). Examiners reward a clear, extended position over sitting on the fence.</li>
+        <li><b>2 body paragraphs</b> — each = Topic sentence → Explain → Example → Link back.</li>
+        <li><b>Concede once</b> — one sentence acknowledging the other side boosts Task Response and Cohesion.</li>
+      </ol>
+      <div class="formula">
+        Safe template: <code>Intro (paraphrase + thesis)</code> → <code>Body 1 (strongest reason)</code> → <code>Body 2 (second reason + concession)</code> → <code>Conclusion (restate)</code>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="exercises">
+  <div class="section-title">
+    <h3>Exercises</h3>
+    <p>Write directly on the lined paper. Your work auto-saves in this browser.</p>
+  </div>
+  <div id="cards"></div>
+
+  <div class="band">
+    <h3>How you’ll be marked (in 30 seconds)</h3>
+    <p>Examiners score 4 criteria equally. Before you tick “done”, check: did you answer the opinion fully? Are ideas in logical paragraphs with linking? Is vocabulary precise with some less-common collocations? Are sentences mostly error-free with a mix of simple + complex?</p>
+    <div class="band-grid">
+      <div class="band-card"><b>Task Response</b><span>Fully answer, clear position throughout, developed ideas + examples.</span></div>
+      <div class="band-card"><b>Coherence &amp; Cohesion</b><span>4–5 paragraphs, logical flow, however / moreover / consequently used naturally.</span></div>
+      <div class="band-card"><b>Lexical Resource</b><span>Topic collocations, paraphrase, precise word choice, few spelling slips.</span></div>
+      <div class="band-card"><b>Grammar Range</b><span>Mix of conditionals, relative clauses, passive; mostly error-free.</span></div>
+    </div>
+  </div>
+</main>
+
+<script>
+const EXERCISES = [
+  {
+    id: 1, topic: "Freedom vs Society", level: "Band 8–9", levelClass:"B9",
+    q: "Individual freedom should take precedence over collective welfare in a just society, even when personal choices harm the wider community. To what extent do you agree or disagree?",
+    hint: "Trap: two abstractions (freedom vs welfare) + a hard concession clause (“even when…”). You must confront the toughest case — freedom that harms others — not just easy examples.",
+    agree: ["Autonomy is the basis of dignity: coerced 'good' behaviour has no moral value", "Collective welfare is subjective — governments misuse it to justify overreach (surveillance, censorship)", "Free individuals innovate and self-correct; paternalism breeds passivity and resentment"],
+    disagree: ["Harm principle: one person's liberty ends where another's begins (pollution, vaccine refusal, hate speech)", "Public goods — health, climate, safety — collapse without constraints on free-riders", "The vulnerable need collective protection precisely because they lack individual power"],
+    thesis: ["“While liberty is fundamental, I disagree that it should override collective welfare when serious harm to others is at stake.”", "“I agree, with qualification: freedom must prevail except where choices cause direct, significant harm to others.”"],
+    vocab: ["take precedence over", "the harm principle", "individual autonomy", "paternalism / state overreach", "infringe upon the rights of others", "at the expense of", "admittedly … however"],
+    outline: "<b>Intro:</b> paraphrase liberty vs welfare + qualified disagree. <b>Body 1:</b> concede the power of autonomy (dignity, innovation + example). <b>Body 2:</b> the limits — harm principle, public goods, vulnerable groups + example (smoking bans / emissions). <b>Conclusion:</b> liberty is the default, welfare the legitimate boundary.",
+    sample: "Few tensions in political philosophy run as deep as that between the individual and the collective. Although personal liberty lies at the heart of human dignity, I believe it cannot extend to choices that inflict serious harm on the community…"
+  },
+  {
+    id: 2, topic: "AI & Humanity", level: "Band 8–9", levelClass:"B9",
+    q: "As artificial intelligence advances, the value of human creativity and critical thinking has been permanently diminished. To what extent do you agree or disagree?",
+    hint: "Trap: an absolute claim about an ongoing process (“permanently diminished”). Challenge the permanence — has value fallen, or merely shifted? Distinguish generating content from judging it.",
+    agree: ["AI now produces passable essays, designs and code in seconds — the market price of routine creative work has collapsed", "Over-reliance atrophies thinking: students outsource drafting and lose the struggle that builds judgement", "Speed rewards prompt-engineering over deep original thought"],
+    disagree: ["AI generates averages from past data; it cannot intend, rebel or bear responsibility — the scarcest (and most valued) inputs", "New tools historically raised the bar: photography freed painting, calculators freed mathematicians", "Critical thinking becomes MORE valuable precisely because verifying AI output demands it"],
+    thesis: ["“I disagree: AI has devalued routine production, but it has amplified — not diminished — the worth of genuine creativity and judgement.”", "“I partly agree that the economic value of average creative output has fallen, yet I deny this extends to original thought.”"],
+    vocab: ["render obsolete ↔ augment human capability", "atrophy critical faculties", "derivative output", "exercise discernment", "a paradigm shift", "conversely", "on balance"],
+    outline: "<b>Intro:</b> paraphrase + disagree with qualification. <b>Body 1:</b> concede the real devaluation (routine copywriting, drafting + example). <b>Body 2:</b> why top-end creativity and verification matter more (intent, accountability, taste + example). <b>Conclusion:</b> value migrated upward, not vanished.",
+    sample: "The rise of generative AI has unsettled writers, designers and programmers alike. While it is true that machine output has flooded the market for routine creative work, I contend that authentic creativity and critical judgement are now prized more highly than ever…"
+  },
+  {
+    id: 3, topic: "Progress & Growth", level: "Band 8–9", levelClass:"B9",
+    q: "Economic growth is the only reliable measure of national progress, and governments should prioritise it above all other goals. To what extent do you agree or disagree?",
+    hint: "Trap: the word “only” plus a policy prescription (“prioritise above all”). Attack the measure itself — what does GDP miss? — then argue priorities can conflict (growth vs health, equality, environment).",
+    agree: ["Growth funds everything else: hospitals, schools and green tech all need a larger tax base", "GDP is objective and comparable; well-being indices are vague and easily manipulated", "History shows growth lifts billions from poverty faster than any redistribution scheme"],
+    disagree: ["GDP counts pollution clean-ups and prison-building as 'progress' — it ignores distribution, health and leisure", "Endless growth collides with planetary limits and burns out workers (inequality, mental-health crises)", "Nations topping happiness and health tables (Nordics) explicitly balance growth with equity and environment"],
+    thesis: ["“I disagree: growth is a vital means, but mistaking it for the sole end of progress distorts policy.”", "“I partly agree that growth deserves priority in developing economies, yet in wealthy states other goals must share first place.”"],
+    vocab: ["a blunt instrument", "conflate growth with well-being", "go beyond GDP", "at the expense of social equity", "decouple prosperity from consumption", "diminishing returns", "admittedly … nevertheless"],
+    outline: "<b>Intro:</b> paraphrase + disagree. <b>Body 1:</b> concede growth's power (poverty reduction + example: East Asia). <b>Body 2:</b> what GDP hides — inequality, unpaid care, environmental debt + example (Bhutan / happiness index). <b>Conclusion:</b> growth as servant, not master.",
+    sample: "For decades, rising GDP has been treated as synonymous with a country moving forward. Although sustained growth has undeniably rescued millions from destitution, I believe elevating it to the sole yardstick of progress is a profound error…"
+  },
+  {
+    id: 4, topic: "Equality & Culture", level: "Band 8–9", levelClass:"B9",
+    q: "Lasting gender equality can never be achieved through legislation alone, since deeply rooted cultural attitudes matter far more than laws. To what extent do you agree or disagree?",
+    hint: "Trap: “never” and “far more” push you toward full agreement — resist. Laws can reshape culture (and vice versa). The sharpest essays trace the two-way interaction with a concrete case.",
+    agree: ["Laws are evaded where norms resist: equal-pay statutes coexist with persistent promotion gaps", "Family and caregiving expectations are set in childhood, far from parliament's reach", "Quotas can breed backlash and tokenism if the underlying culture is untouched"],
+    disagree: ["Legislation rewires incentives, and behaviour eventually drags attitudes with it (paternity-leave mandates in Scandinavia)", "Only law protects those too powerless to wait for culture to evolve", "Landmark bans — on marital discrimination, on harassment — preceded and triggered cultural shifts, not the reverse"],
+    thesis: ["“I partly agree that culture is the deeper obstacle, but I reject the claim that law is secondary — the two advance together.”", "“While attitudes ultimately decide, I disagree that legislation is powerless: it is the lever that moves culture.”"],
+    vocab: ["entrenched attitudes", "legislate against discrimination", "a catalyst for cultural change", "pay lip service to equality", "structural barriers", "tokenism / backlash", "in tandem with"],
+    outline: "<b>Intro:</b> paraphrase + qualified position (interaction, not contest). <b>Body 1:</b> concede culture's depth (unpaid care, socialisation + example). <b>Body 2:</b> law as the trigger — mandates, enforcement, protection + example (Nordic parental leave / harassment law). <b>Conclusion:</b> neither alone suffices.",
+    sample: "Despite decades of equal-rights legislation, gender gaps in pay and power persist almost everywhere. This has led some to conclude that culture, not law, is the decisive arena — a view I find half-true: statutes alone cannot finish the task, but history shows little changes without them…"
+  },
+  {
+    id: 5, topic: "Science & Ethics", level: "Band 8–9", levelClass:"B9",
+    q: "Scientific research should never be restricted on ethical grounds, because its benefits to humanity always outweigh the risks. To what extent do you agree or disagree?",
+    hint: "Trap: two absolutes (“never”, “always”) in one sentence. One historical counterexample (eugenics, thalidomide, data harvesting) defeats “always”. Defend science's value while admitting boundaries.",
+    agree: ["Breakthroughs once condemned as unethical — vaccines, IVF, organ transplants — now save millions", "Restrictions drive research underground or abroad, where no oversight exists at all", "Ethics boards are slow, politicised and risk-averse; moratoriums cost lives"],
+    disagree: ["Some knowledge foreseeably enables catastrophe (bioweapons, runaway AI, heritable gene editing)", "Subjects of past 'unrestricted' science — the vulnerable, the colonised — paid the price without consent", "Ethical limits are what keep public trust, and without trust science loses funding and legitimacy"],
+    thesis: ["“I firmly disagree: science flourishes most when ethical guardrails preserve the public trust it depends on.”", "“While over-regulation is a real danger, I reject the absolutist claim that no research should ever face ethical limits.”"],
+    vocab: ["ethical guardrails", "informed consent", "dual-use research", "foreseeable harm", "stifle innovation ↔ unleash catastrophe", "moratorium on", "on balance"],
+    outline: "<b>Intro:</b> paraphrase + disagree. <b>Body 1:</b> concede the cost of restriction (delayed cures, ethics creep + example: IVF opposition). <b>Body 2:</b> why limits are legitimate — catastrophic risk, exploitation, trust + example (gene-edited babies / bioweapons conventions). <b>Conclusion:</b> freedom within bounds.",
+    sample: "Few questions divide scientists and philosophers more sharply than whether inquiry itself should have limits. Although excessive caution has undoubtedly delayed life-saving advances, I maintain that placing certain research beyond ethical bounds protects, rather than betrays, the scientific enterprise…"
+  },
+  {
+    id: 6, topic: "Culture & Identity", level: "Band 8–9", levelClass:"B9",
+    q: "In multicultural societies, protecting minority languages and traditions hinders social cohesion and economic efficiency. To what extent do you agree or disagree?",
+    hint: "Trap: a counter-intuitive claim — diversity framed as a cost. Don't just celebrate diversity; steelman the cohesion argument (shared language, shared norms) before rebutting it with evidence.",
+    agree: ["A common language lowers transaction costs in schools, workplaces and public services", "Parallel traditions can harden into parallel lives — segregation, not multiculturalism", "Limited budgets force choices: funding heritage schemes diverts money from integration that benefits all"],
+    disagree: ["Cohesion built on suppression is brittle; recognised minorities participate more, not less (bilingual education outcomes)", "Cultural diversity is an economic asset — tourism, trade links, creative industries", "Languages encode irreplaceable knowledge (medicinal, ecological); their loss impoverishes everyone"],
+    thesis: ["“I disagree: the evidence suggests recognised diversity strengthens cohesion, while forced uniformity undermines it.”", "“I partly concede short-term frictions, but maintain that protection pays long-term social and economic dividends.”"],
+    vocab: ["social cohesion", "assimilation vs integration", "parallel lives", "a shared civic identity", "transaction costs", "irreplaceable heritage", "far from hindering … it fosters"],
+    outline: "<b>Intro:</b> paraphrase + disagree. <b>Body 1:</b> steelman the cohesion case (common language, costs + example). <b>Body 2:</b> rebuttal — recognition boosts participation and prosperity + example (Wales/Maori revival, bilingual schooling). <b>Conclusion:</b> unity through inclusion, not erasure.",
+    sample: "As migration reshapes cities worldwide, some argue that the price of harmony is cultural uniformity. While the appeal of a single shared tongue is understandable, I believe the record shows the opposite: societies that shelter minority cultures cohere more durably than those that suppress them…"
+  }
+];
+
+const cardsEl = document.getElementById('cards');
+
+function esc(s){return s.replace(/</g,'&lt;');}
+
+EXERCISES.forEach((ex, idx) => {
+  const n = String(idx+1).padStart(2,'0');
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.id = 'q'+ex.id;
+  el.innerHTML = `
+    <div class="card-top">
+      <div class="tags">
+        <span class="tag topic">${n} · ${ex.topic}</span>
+        <span class="tag level-${ex.levelClass}">${ex.level}</span>
+        <span class="done-badge" id="done-${ex.id}">✓ Marked done</span>
+      </div>
+      <div class="timer">
+        <span>⏱</span>
+        <span class="timer-display" id="time-${ex.id}">40:00</span>
+        <button data-timer="${ex.id}" data-act="start">Start</button>
+        <button data-timer="${ex.id}" data-act="reset">Reset</button>
+      </div>
+    </div>
+    <div class="qbox">
+      <div class="q-label">Writing prompt — agree / disagree</div>
+      <p class="question">${ex.q}</p>
+      <p class="q-hint"><b>Examiner tip:</b> ${ex.hint}</p>
+    </div>
+    <div class="rescue-bar">
+      <button class="btn btn-ideas" data-toggle="ideas-${ex.id}">🛟 Stuck? Get Ideas</button>
+      <button class="btn btn-ghost btn-small" data-toggle="vocab-${ex.id}">📖 Vocabulary</button>
+      <button class="btn btn-ghost btn-small" data-toggle="outline-${ex.id}">🧭 Model outline</button>
+      <button class="btn btn-ghost btn-small" data-toggle="sample-${ex.id}">✍️ Sample intro</button>
+    </div>
+    <div class="panel panel-ideas" id="ideas-${ex.id}">
+      <h4>🛟 Rescue ideas — steal any two and make them yours</h4>
+      <div class="cols">
+        <div class="agree"><b>✔ If you AGREE, argue this:</b><ul>${ex.agree.map(a=>`<li>${a}</li>`).join('')}</ul></div>
+        <div class="disagree"><b>✘ If you DISAGREE, argue this:</b><ul>${ex.disagree.map(a=>`<li>${a}</li>`).join('')}</ul></div>
+      </div>
+      <div class="thesis"><strong>Copy-adapt thesis → </strong>${ex.thesis.map(t=>`<div style="margin-top:6px">• ${t}</div>`).join('')}</div>
+    </div>
+    <div class="panel panel-vocab" id="vocab-${ex.id}">
+      <h4>📖 Band 7+ collocations — use 4–5 in your essay</h4>
+      <div class="vocab-grid">${ex.vocab.map(v=>`<span>${v}</span>`).join('')}</div>
+    </div>
+    <div class="panel panel-outline" id="outline-${ex.id}">
+      <h4>🧭 Model outline — 4 paragraphs</h4>
+      <div>${ex.outline}</div>
+    </div>
+    <div class="panel panel-sample" id="sample-${ex.id}">
+      <h4>✍️ Sample opening (don’t memorise — paraphrase the idea)</h4>
+      <div style="font-family:Georgia,serif;font-style:italic">“${ex.sample}”</div>
+    </div>
+    <div class="write-wrap">
+      <div class="write-meta">
+        <span class="word-pill low" id="words-${ex.id}">0 words · need 250</span>
+        <span class="checklist">☐ position clear &nbsp; ☐ 2 developed ideas &nbsp; ☐ example each &nbsp; ☐ concession sentence</span>
+      </div>
+      <textarea id="text-${ex.id}" placeholder="Plan here in 2 lines (position + 2 reasons), then write your 4-paragraph essay…&#10;&#10;Tip: aim for 260–290 words."></textarea>
+      <div class="write-actions">
+        <button class="btn btn-small" data-act2="copy" data-id="${ex.id}">Copy text</button>
+        <button class="btn btn-small" data-act2="clear" data-id="${ex.id}">Clear</button>
+        <button class="btn btn-small" style="background:var(--sage-bg);border-color:var(--sage)" data-act2="done" data-id="${ex.id}">Mark as done ✓</button>
+      </div>
+    </div>
+  `;
+  cardsEl.appendChild(el);
+});
+
+// toggle panels
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-toggle]');
+  if(t){
+    const p = document.getElementById(t.dataset.toggle);
+    const wasOpen = p.classList.contains('open');
+    // close sibling panels? keep multiple open except ideas exclusive-ish — simple toggle
+    p.classList.toggle('open', !wasOpen);
+    if(!wasOpen) p.scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+});
+
+// word count + autosave
+function countWords(s){ const m = s.trim().match(/\S+/g); return m ? m.length : 0; }
+function updateWords(id){
+  const ta = document.getElementById('text-'+id);
+  const pill = document.getElementById('words-'+id);
+  const n = countWords(ta.value);
+  pill.textContent = n + ' words' + (n >= 250 ? ' · ✓ target met' : ' · need 250');
+  pill.className = 'word-pill ' + (n >= 250 ? 'ok' : 'low');
+  try{ localStorage.setItem('ielts-agree-'+id, ta.value); }catch(_){}
+}
+EXERCISES.forEach(ex => {
+  const ta = document.getElementById('text-'+ex.id);
+  try{ ta.value = localStorage.getItem('ielts-agree-'+ex.id) || ''; }catch(_){}
+  updateWords(ex.id);
+  ta.addEventListener('input', ()=>updateWords(ex.id));
+});
+
+// copy / clear / done
+let done = new Set();
+try{ done = new Set(JSON.parse(localStorage.getItem('ielts-agree-done')||'[]')); }catch(_){}
+function refreshDone(){
+  document.getElementById('navProgress').textContent = done.size + ' / 6 done';
+  EXERCISES.forEach(ex=>{
+    document.getElementById('done-'+ex.id).classList.toggle('show', done.has(ex.id));
+  });
+  try{ localStorage.setItem('ielts-agree-done', JSON.stringify([...done])); }catch(_){}
+}
+refreshDone();
+
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-act2]');
+  if(!b) return;
+  const id = b.dataset.id;
+  const ta = document.getElementById('text-'+id);
+  if(b.dataset.act2==='copy'){ navigator.clipboard.writeText(ta.value).then(()=>{b.textContent='Copied ✓'; setTimeout(()=>b.textContent='Copy text',1500);}); }
+  if(b.dataset.act2==='clear'){ if(confirm('Clear your draft for Q'+id+'?')){ ta.value=''; updateWords(id); } }
+  if(b.dataset.act2==='done'){ done.has(+id||id) ? done.delete(+id||id) : null; done.add(Number(id)); refreshDone(); b.textContent='Saved ✓'; setTimeout(()=>b.textContent='Mark as done ✓',1500); }
+});
+
+// timers (one per card)
+const timerState = {};
+document.addEventListener('click', e=>{
+  const b = e.target.closest('[data-timer]');
+  if(!b) return;
+  const id = b.dataset.timer;
+  const disp = document.getElementById('time-'+id);
+  if(b.dataset.act==='reset'){
+    clearInterval(timerState[id]?.int);
+    timerState[id] = {left: 40*60};
+    disp.textContent = '40:00';
+    disp.style.background = 'var(--ink)';
+    return;
+  }
+  // start / pause
+  const st = timerState[id] || (timerState[id] = {left: 40*60, int:null});
+  if(st.int){ clearInterval(st.int); st.int=null; b.textContent='Resume'; return; }
+  b.textContent='Pause';
+  st.int = setInterval(()=>{
+    st.left--;
+    if(st.left<=0){ clearInterval(st.int); st.int=null; disp.textContent='TIME UP'; disp.style.background='var(--red)'; b.textContent='Start'; return; }
+    const m = String(Math.floor(st.left/60)).padStart(2,'0'), s = String(st.left%60).padStart(2,'0');
+    disp.textContent = m+':'+s;
+    if(st.left<=300) disp.style.background='var(--red)';
+  },1000);
+});
+
+// scroll progress
+addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const p = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+  document.getElementById('progressBar').style.width = p + '%';
+},{passive:true});
+</script>
+</body>
+</html>
